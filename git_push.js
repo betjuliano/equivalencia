@@ -59,34 +59,17 @@ async function run() {
 
   // 4. Push
   console.log('Pushing to remote...');
-  try {
-    const pushResult = await git.push({
-      fs,
-      http,
-      dir,
-      remote: 'origin',
-      ref: 'main',
-      url: remoteUrl,
-      onAuth: () => ({ username: token }) // Using token as username for PAT
-    });
-    console.log('Push completed:', pushResult);
-  } catch (err) {
-    if (err.message.includes('remote error: branch "main" not found')) {
-        // Try pushing to a new branch if remote is empty
-        console.log('Retrying push to new branch...');
-        await git.push({
-            fs,
-            http,
-            dir,
-            force: true,
-            remote: 'origin',
-            url: remoteUrl,
-            onAuth: () => ({ username: token })
-        });
-    } else {
-        throw err;
-    }
-  }
+  const pushResult = await git.push({
+    fs,
+    http,
+    dir,
+    remote: 'origin',
+    ref: 'main',
+    url: remoteUrl,
+    force: true,
+    onAuth: () => ({ username: token }) // Using token as username for PAT
+  });
+  console.log('Push completed:', pushResult);
 }
 
 run().catch(err => {
