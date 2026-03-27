@@ -1,0 +1,13 @@
+{
+  "codigo": "CAD1090",
+  "nome": "Teoria das Organizações I",
+  "semestre": null,
+  "tipo": "OBR",
+  "ch_total": 60,
+  "nucleo_grupo": "Formação Profissional",
+  "programa": "",
+  "pre_requisito": [
+    "CAD1088"
+  ],
+  "t_p_pext": "60-0-0"
+}

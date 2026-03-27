@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+.next/
+dist/
+build/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Project specific
+.env
+_evo-output/
+.gemini/
+.claude/
+.agents/
+.agent/
+.opencode/
+brain/
+tmp/

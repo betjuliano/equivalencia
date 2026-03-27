@@ -1,0 +1,13 @@
+{
+  "codigo": "CAD1089",
+  "nome": "Oficina de Empreendedorismo",
+  "semestre": null,
+  "tipo": "OBR",
+  "ch_total": 30,
+  "nucleo_grupo": "Formação Profissional",
+  "programa": "",
+  "pre_requisito": [
+    "NÃO"
+  ],
+  "t_p_pext": "15-15-0"
+}

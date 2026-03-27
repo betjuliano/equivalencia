@@ -1,0 +1,240 @@
+{
+  "id": "ufsm_JUR1120",
+  "tipo": "ufsm",
+  "codigo": "JUR1120",
+  "nome": "Direito Tributário",
+  "slug": "direito_tributario",
+  "curso": "Administracao",
+  "curso_slug": "administracao",
+  "carga_horaria": 60.0,
+  "carga_horaria_fonte": "manual",
+  "modalidade": "presencial",
+  "possui_extensao": false,
+  "e_estagio": false,
+  "e_tcc": false,
+  "programa_original": "JUR1120\nInformações Gerais\nNome:\nDireito Tributário\nCódigo:\nJUR1120\nDepartamento:\nDepartamento de Direito (06.34.00.00.0.0)\nSituação:\nAtiva (A)\nTipo:\nDisciplina\nCréditos:\n4\nOferta presencial:\n Ver turmas em oferta\nObjetivos\nDominar os conhecimentos gerais dos principais institutos do Direito Tributário, notadamente dos tributos (impostos e taxas) que compõem o Sistema Tributário Nacional, habilitando-se a encaminhar para solução os problemas com que possa se defrontar na vida profissional.\n\nCarga Horária – Total: 60h\nTipo da Aula\tCarga Horária\nTeórica\t60h\nCurrículos\nCurso\tVersão do Curso\tCarga Horária EaD\tPapel no currículo\nDescrição\tAno\tSituação\nAdministração - Diurno\t2019\t2019\tAtiva\tNão possui\tObrigatória\nAdministração - Diurno\t2024\t2023\tCorrente\tNão possui\tObrigatória\nAdministração - Noturno\t2019\t2019\tAtiva\tNão possui\tObrigatória\nAdministração - Noturno\t2026\t2026\tCorrente\tNão possui\tObrigatória\nPrograma\nPrograma Autenticado\nPROGRAMA\nUNIDADE 1 - CONCEITOS FUNDAMENTAIS DO DIREITO TRIBUTÁRIO\n\n1.1 - Conceito.\n\n1.2 - Fontes.\n\n1.3 - Princípios.\n\nUNIDADE 2 - SISTEMA CONSTITUCIONAL TRIBUTÁRIO\n\n2.1 - Competência tributária.\n\n2.2 - Limitação da competência tributária.\n\nUNIDADE 3 - ESPÉCIES DE TRIBUTOS\n\n3.1 - Tributos da União.\n\n3.2 - Tributos dos Estados.\n\n3.3 - Tributos dos Municípios.\n\nUNIDADE 4 - OBRIGAÇÃO TRIBUTÁRIA\n\n4.1 - Natureza.\n\n4.2 - Fontes.\n\n4.3 - Elementos.\n\n4.4 - Fato gerador.\n\n4.5 - Lançamento.\n\n4.5.1 - Espécie.\n\n4.5.2 - Efeitos.\n\n4.6 - Suspensão.\n\n4.7 - Extinção e exclusão do crédito tributário e formas por que se processam.\n\nUNIDADE 5 - CRÉDITO TRIBUTÁRIO\n\n5.1 - Origem.\n\n5.2 - Extinção.\n\nUNIDADE 6 - ADMINISTRAÇÃO TRIBUTÁRIA\n\n6.1 - Arrecadação.\n\n6.2 - Destinação.\n\nUNIDADE 7 - PROCESSO TRIBUTÁRIO\n\n7.1 - Procedimentos administrativos.\n\n7.1.1 - Espécies.\n\n7.1.2 - Graus.\n\n7.1.3 - Competência.\n\n7.2 - Procedimento judicial.\n\n7.2.1 - Espécie.\n\n7.2.2 - Competência.\n\n7.2.3 - Duplo grau de jurisdição.\n\n7.2.4 - Efeitos da decisão.\n\nUNIDADE 8 - PLANEJAMENTO TRIBUTÁRIO NA EMPRESA\n\n8.1 - Objetivos.\n\n8.2 - Evasão legal.\n\nBIBLIOGRAFIA\nBIBLIOGRAFIA BÁSICA\n\nCARRAZZA, Roque Antonio. Curso de direito constitucional tributário. 31ª ed. São Paulo: Malheiros, 2017.\n\nHARADA, Kiyoshi. Direito financeiro e tributário. 26ª ed. São Paulo: Atlas, 2017.\n\nSABBAG, Eduardo de Moraes. Manual de direito tributário. São Paulo: Saraiva, 2018.\n\nBIBLIOGRAFIA COMPLEMENTAR\n\nCOSTA, Regina Helena. Curso de direito tributário. 7ª ed. São Paulo: Saraiva, 2017.\n\nPAULSEN, Leandro. Curso de direito tributário completo. 8ª ed. São Paulo: Saraiva, 2017.",
+  "programa_estruturado": {
+    "unidades": [
+      {
+        "numero": "1",
+        "titulo": "CONCEITOS FUNDAMENTAIS DO DIREITO TRIBUTÁRIO",
+        "topicos": [
+          {
+            "numero": "1.1",
+            "texto": "- Conceito.",
+            "subtopicos": []
+          },
+          {
+            "numero": "1.2",
+            "texto": "- Fontes.",
+            "subtopicos": []
+          },
+          {
+            "numero": "1.3",
+            "texto": "- Princípios.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "2",
+        "titulo": "SISTEMA CONSTITUCIONAL TRIBUTÁRIO",
+        "topicos": [
+          {
+            "numero": "2.1",
+            "texto": "- Competência tributária.",
+            "subtopicos": []
+          },
+          {
+            "numero": "2.2",
+            "texto": "- Limitação da competência tributária.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "3",
+        "titulo": "ESPÉCIES DE TRIBUTOS",
+        "topicos": [
+          {
+            "numero": "3.1",
+            "texto": "- Tributos da União.",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.2",
+            "texto": "- Tributos dos Estados.",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.3",
+            "texto": "- Tributos dos Municípios.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "4",
+        "titulo": "OBRIGAÇÃO TRIBUTÁRIA",
+        "topicos": [
+          {
+            "numero": "4.1",
+            "texto": "- Natureza.",
+            "subtopicos": []
+          },
+          {
+            "numero": "4.2",
+            "texto": "- Fontes.",
+            "subtopicos": []
+          },
+          {
+            "numero": "4.3",
+            "texto": "- Elementos.",
+            "subtopicos": []
+          },
+          {
+            "numero": "4.4",
+            "texto": "- Fato gerador.",
+            "subtopicos": []
+          },
+          {
+            "numero": "4.5",
+            "texto": "- Lançamento.",
+            "subtopicos": [
+              {
+                "numero": "4.5.1",
+                "texto": "- Espécie."
+              },
+              {
+                "numero": "4.5.2",
+                "texto": "- Efeitos."
+              }
+            ]
+          },
+          {
+            "numero": "4.6",
+            "texto": "- Suspensão.",
+            "subtopicos": []
+          },
+          {
+            "numero": "4.7",
+            "texto": "- Extinção e exclusão do crédito tributário e formas por que se processam.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "5",
+        "titulo": "CRÉDITO TRIBUTÁRIO",
+        "topicos": [
+          {
+            "numero": "5.1",
+            "texto": "- Origem.",
+            "subtopicos": []
+          },
+          {
+            "numero": "5.2",
+            "texto": "- Extinção.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "6",
+        "titulo": "ADMINISTRAÇÃO TRIBUTÁRIA",
+        "topicos": [
+          {
+            "numero": "6.1",
+            "texto": "- Arrecadação.",
+            "subtopicos": []
+          },
+          {
+            "numero": "6.2",
+            "texto": "- Destinação.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "7",
+        "titulo": "PROCESSO TRIBUTÁRIO",
+        "topicos": [
+          {
+            "numero": "7.1",
+            "texto": "- Procedimentos administrativos.",
+            "subtopicos": [
+              {
+                "numero": "7.1.1",
+                "texto": "- Espécies."
+              },
+              {
+                "numero": "7.1.2",
+                "texto": "- Graus."
+              },
+              {
+                "numero": "7.1.3",
+                "texto": "- Competência."
+              }
+            ]
+          },
+          {
+            "numero": "7.2",
+            "texto": "- Procedimento judicial.",
+            "subtopicos": [
+              {
+                "numero": "7.2.1",
+                "texto": "- Espécie."
+              },
+              {
+                "numero": "7.2.2",
+                "texto": "- Competência."
+              },
+              {
+                "numero": "7.2.3",
+                "texto": "- Duplo grau de jurisdição."
+              },
+              {
+                "numero": "7.2.4",
+                "texto": "- Efeitos da decisão."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "numero": "8",
+        "titulo": "PLANEJAMENTO TRIBUTÁRIO NA EMPRESA",
+        "topicos": [
+          {
+            "numero": "8.1",
+            "texto": "- Objetivos.",
+            "subtopicos": []
+          },
+          {
+            "numero": "8.2",
+            "texto": "- Evasão legal.",
+            "subtopicos": []
+          }
+        ]
+      }
+    ]
+  },
+  "bibliografia": {
+    "basica": [
+      "CARRAZZA, Roque Antonio. Curso de direito constitucional tributário. 31ª ed. São Paulo: Malheiros, 2017.",
+      "HARADA, Kiyoshi. Direito financeiro e tributário. 26ª ed. São Paulo: Atlas, 2017.",
+      "SABBAG, Eduardo de Moraes. Manual de direito tributário. São Paulo: Saraiva, 2018."
+    ],
+    "complementar": [
+      "COSTA, Regina Helena. Curso de direito tributário. 7ª ed. São Paulo: Saraiva, 2017.",
+      "PAULSEN, Leandro. Curso de direito tributário completo. 8ª ed. São Paulo: Saraiva, 2017."
+    ]
+  },
+  "metadados": {
+    "versao_ppc": null,
+    "origem_importacao": "cadastro_admin",
+    "arquivo_origem": null,
+    "criado_em": "2026-03-27T13:21:14.153980+00:00",
+    "atualizado_em": "2026-03-27T13:21:14.153980+00:00"
+  }
+}

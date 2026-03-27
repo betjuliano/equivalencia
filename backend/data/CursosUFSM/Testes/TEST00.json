@@ -1,0 +1,42 @@
+{
+  "id": "ufsm_TEST00",
+  "tipo": "ufsm",
+  "codigo": "TEST00",
+  "nome": "UFSM Test",
+  "slug": "ufsm_test",
+  "curso": "Adm",
+  "curso_slug": "adm",
+  "carga_horaria": 60.0,
+  "carga_horaria_fonte": "manual",
+  "modalidade": "presencial",
+  "possui_extensao": false,
+  "e_estagio": false,
+  "e_tcc": false,
+  "programa_original": "Esteblece testes. Processa testes.",
+  "programa_estruturado": {
+    "unidades": [
+      {
+        "numero": "1",
+        "titulo": "Conteúdo Programático",
+        "topicos": [
+          {
+            "numero": "1",
+            "texto": "Esteblece testes. Processa testes.",
+            "subtopicos": []
+          }
+        ]
+      }
+    ]
+  },
+  "bibliografia": {
+    "basica": [],
+    "complementar": []
+  },
+  "metadados": {
+    "versao_ppc": null,
+    "origem_importacao": "cadastro_admin",
+    "arquivo_origem": null,
+    "criado_em": "2026-03-27T12:37:22.624892+00:00",
+    "atualizado_em": "2026-03-27T12:37:22.624892+00:00"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "id": "analise_20260327T123722Z_6ac59a",
+      "ufsm_program_id": "ufsm_TEST00",
+      "external_program_id": "ext_uni_test_1_3c6376",
+      "external_program_ids": [
+        "ext_uni_test_1_3c6376",
+        "ext_uni_test_2_c840d1"
+      ],
+      "content_score": 75.0,
+      "workload_score": 100.0,
+      "resultado_tecnico": "pre_aprovavel_tecnicamente",
+      "resultado_final": "pendente_certificacao",
+      "criado_em": "2026-03-27T12:37:23.253442+00:00"
+    }
+  ],
+  "updated_at": "2026-03-27T12:37:23.253442+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "id": "ext_uni_test_1_3c6376",
+      "codigo": "EXT01",
+      "nome": "Test 1",
+      "instituicao": "Uni",
+      "instituicao_slug": "uni",
+      "carga_horaria": 30
+    },
+    {
+      "id": "ext_uni_test_2_c840d1",
+      "codigo": "EXT02",
+      "nome": "Test 2",
+      "instituicao": "Uni",
+      "instituicao_slug": "uni",
+      "carga_horaria": 30
+    }
+  ],
+  "updated_at": "2026-03-27T12:37:22.638964+00:00"
+}

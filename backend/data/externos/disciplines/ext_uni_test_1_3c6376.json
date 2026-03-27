@@ -1,0 +1,44 @@
+{
+  "id": "ext_uni_test_1_3c6376",
+  "tipo": "externo",
+  "codigo": "EXT01",
+  "nome": "Test 1",
+  "instituicao": "Uni",
+  "instituicao_slug": "uni",
+  "curso_origem": "Adm",
+  "carga_horaria": 30.0,
+  "carga_horaria_fonte": "manual",
+  "modalidade": "presencial",
+  "nota": null,
+  "aprovado": null,
+  "possui_extensao": false,
+  "e_estagio": false,
+  "e_tcc": false,
+  "programa_original": "Esteblece testes.",
+  "programa_estruturado": {
+    "unidades": [
+      {
+        "numero": "1",
+        "titulo": "Conteúdo Programático",
+        "topicos": [
+          {
+            "numero": "1",
+            "texto": "Esteblece testes.",
+            "subtopicos": []
+          }
+        ]
+      }
+    ]
+  },
+  "bibliografia": {
+    "basica": [],
+    "complementar": []
+  },
+  "metadados": {
+    "versao_ppc": null,
+    "origem_importacao": "envio_usuario",
+    "arquivo_origem": null,
+    "criado_em": "2026-03-27T12:37:22.628422+00:00",
+    "atualizado_em": "2026-03-27T12:37:22.628422+00:00"
+  }
+}

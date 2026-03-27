@@ -1,0 +1,63 @@
+{
+  "id": "analise_20260327T123722Z_6ac59a",
+  "ufsm_program_id": "ufsm_TEST00",
+  "external_program_id": "ext_uni_test_1_3c6376",
+  "external_program_ids": [
+    "ext_uni_test_1_3c6376",
+    "ext_uni_test_2_c840d1"
+  ],
+  "threshold_content": 75.0,
+  "threshold_workload": 75.0,
+  "content_score": 75.0,
+  "workload_score": 100.0,
+  "resultado_tecnico": "pre_aprovavel_tecnicamente",
+  "resultado_final": "pendente_certificacao",
+  "reused_from_analysis_id": null,
+  "workload": {
+    "ufsm": 60.0,
+    "externo": 60.0,
+    "fonte_ufsm": "manual",
+    "fonte_externo": "Múltiplos"
+  },
+  "matches": [
+    {
+      "ufsm_item": "Conteúdo Programático",
+      "externo_item": "Conteúdo Programático",
+      "score_bruto": 1.0,
+      "score_final": 0.9,
+      "palavras_coincidentes": [
+        "conteúdo",
+        "programático"
+      ],
+      "bonus_sinonimos": false,
+      "classificacao": "equivalente",
+      "pontuacao": 1.0
+    },
+    {
+      "ufsm_item": "Esteblece testes. Processa testes.",
+      "externo_item": "Esteblece testes.",
+      "score_bruto": 0.8415,
+      "score_final": 0.6461,
+      "palavras_coincidentes": [
+        "esteblece",
+        "testes"
+      ],
+      "bonus_sinonimos": false,
+      "classificacao": "parcialmente_equivalente",
+      "pontuacao": 0.5
+    }
+  ],
+  "alertas": [
+    {
+      "tipo": "disciplina_fora_matriz",
+      "mensagem": "A disciplina UFSM 'UFSM Test' não foi localizada na matriz curricular padrão (matriz_curricular_editavel.xlsx). Verifique se o nome está correto ou se a disciplina pertence à grade atual.",
+      "nivel": "warning"
+    }
+  ],
+  "observacoes_tecnicas": "Score de conteúdo: 75.00% (limiar: 75.0%)\nScore de carga horária: 100.00% (limiar: 75.0%)\nTotal de itens comparados (UFSM): 2",
+  "metadados": {
+    "criado_por": null,
+    "criado_em": "2026-03-27T12:37:23.253442+00:00",
+    "algoritmo_versao": "1.0.0"
+  }
+}
