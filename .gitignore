@@ -16,11 +16,10 @@ ENV/
 
 # Project specific
 .env
+.github_token
 _evo-output/
 .gemini/
 .claude/
-.agents/
-.agent/
 .opencode/
 brain/
 tmp/
