@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     threshold_parcial: float = 0.45
 
     class Config:
-        env_file = "../.env"
+        env_file = Path(__file__).parent.parent.parent / ".env"
         extra = "ignore"
 
 

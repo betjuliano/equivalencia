@@ -61,6 +61,16 @@ async def startup():
     certification_service = CertificationService(DATA_DIR, index_store)
 
 
+@app.get("/", tags=["health"])
+async def root():
+    return {
+        "message": "Sistema de Comparação de Programas (S.ADM) API",
+        "version": settings.version,
+        "health_check": "/api/v1/health",
+        "docs": "/docs"
+    }
+
+
 # ─── Routers ─────────────────────────────────────────────────────────────────
 from src.api import auth_routes, programs, analyses, certifications, uploads, public_search, courses, externals
 

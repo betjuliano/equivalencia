@@ -39,6 +39,7 @@ class PDFProgramRequest(BaseModel):
     carga_horaria_informada: Optional[float] = None
     nota: Optional[float] = None
     aprovado: Optional[bool] = None
+    ementa_texto: Optional[str] = None
 
 
 # ─── Routes ──────────────────────────────────────────────────────────────────
@@ -101,17 +102,28 @@ async def create_program_from_pdf(
     if not pdf_path.exists():
         raise HTTPException(status_code=404, detail="Upload não encontrado")
 
-    prog = await svc.cadastrar_externo_por_pdf(
-        pdf_path=pdf_path,
-        codigo=req.codigo,
-        nome=req.nome,
-        instituicao=req.instituicao or "Desconhecida",
-        curso_origem=req.curso or "",
-        carga_horaria_informada=req.carga_horaria_informada,
-        nota=req.nota,
-        aprovado=req.aprovado,
-        usuario=user_id,
-    )
+    if req.tipo == "ufsm":
+        prog = await svc.cadastrar_ufsm_por_pdf(
+            pdf_path=pdf_path,
+            codigo=req.codigo,
+            nome=req.nome,
+            curso=req.curso or "",
+            carga_horaria_informada=req.carga_horaria_informada,
+            usuario=user_id,
+        )
+    else:
+        prog = await svc.cadastrar_externo_por_pdf(
+            pdf_path=pdf_path,
+            codigo=req.codigo,
+            nome=req.nome,
+            instituicao=req.instituicao or "Desconhecida",
+            curso_origem=req.curso or "",
+            carga_horaria_informada=req.carga_horaria_informada,
+            nota=req.nota,
+            aprovado=req.aprovado,
+            usuario=user_id,
+            ementa_texto=req.ementa_texto,
+        )
     return {"program_id": prog.id, "status": "created"}
 
 

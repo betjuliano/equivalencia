@@ -21,29 +21,62 @@ export default function Home() {
   const [loadingAnalise, setLoadingAnalise] = useState(false);
   const [analysisIdResult, setAnalysisIdResult] = useState<string | null>(null);
 
+  // Backend connectivity error
+  const [backendError, setBackendError] = useState<string | null>(null);
+
   useEffect(() => {
-    // Initial fetch for Consultation
-    handleSearchConsulta();
+    let cancelled = false;
+    const load = async () => {
+      setLoadingConsulta(true);
+      try {
+        const res = await searchPublicEquivalences('', '');
+        if (!cancelled) {
+          setItems(res.items || []);
+          setHasSearched(true);
+          setBackendError(null);
+        }
+      } catch (err: any) {
+        if (!cancelled) {
+          setItems([]);
+          setBackendError(
+            err.message?.includes('Tempo limite') || err.message?.includes('conexão')
+              ? '⚠️ Backend inacessível. Inicie o servidor Python na porta 3008 e recarregue a página.'
+              : (err.message || 'Erro ao conectar ao servidor.')
+          );
+        }
+      } finally {
+        if (!cancelled) setLoadingConsulta(false);
+      }
+    };
+    load();
+    return () => { cancelled = true; };
   }, []);
 
   const handleSearchConsulta = async (e?: React.FormEvent) => {
     e?.preventDefault();
     setLoadingConsulta(true);
+    setBackendError(null);
     try {
       const res = await searchPublicEquivalences(curso, disciplina);
       setItems(res.items || []);
       setHasSearched(true);
-    } catch (err) { setItems([]); } 
+    } catch (err: any) { 
+      setItems([]);
+      setBackendError(err.message || 'Erro ao buscar. Tente novamente.');
+    } 
     finally { setLoadingConsulta(false); }
   };
+
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
 
   const handleCreateAnalysis = async () => {
     if (!ufsmId || extIds.length === 0) return;
     setLoadingAnalise(true);
+    setAnalysisError(null);
     try {
       const res = await createAnalysis({ ufsm_program_id: ufsmId, external_program_ids: extIds });
       setAnalysisIdResult(res.analysis_id);
-    } catch (err: any) { alert(err.message || 'Erro ao comparar programas'); }
+    } catch (err: any) { setAnalysisError(err.message || 'Erro ao comparar programas'); }
     finally { setLoadingAnalise(false); }
   };
 
@@ -55,8 +88,9 @@ export default function Home() {
     <>
       <section className="hero fade-in">
         <div className="hero-content">
-          <h1>Equivalência de Disciplinas <br /><span style={{ color: '#93c5fd' }}>Ágil e Acadêmica</span></h1>
-          <p>Envie os programas e valide a compatibilidade de currículos 📖</p>
+          <div className="hero-badge">🎓 Universidade Federal de Santa Maria</div>
+          <h1 className="hero-brand">Equivale <span className="brand-accent">UFSM</span></h1>
+          <p className="hero-tagline">Análise inteligente de equivalência de disciplinas — validação curricular ágil e acadêmica</p>
         </div>
       </section>
 
@@ -70,6 +104,12 @@ export default function Home() {
       </div>
 
       <section className="page-content container fade-in" style={{ paddingTop: 0 }}>
+        {backendError && (
+          <div className="alert alert-error mb-4" role="alert">
+            <strong>Erro de Conexão:</strong> {backendError}
+            <button className="btn btn-outline btn-sm ml-4" onClick={() => window.location.reload()}>Recarregar</button>
+          </div>
+        )}
         {tab === 'consulta' && (
           <div className="fade-in">
             <div className="search-widget mb-4">
@@ -146,6 +186,12 @@ export default function Home() {
                    )}
                  </div>
 
+                 {analysisError && (
+                   <div className="alert alert-error mb-3" role="alert">
+                     <strong>Erro:</strong> {analysisError}
+                   </div>
+                 )}
+
                  <div className="alert alert-info mb-3">
                    <strong>Instruções ao Aluno:</strong> Preencha os dados da disciplina que você deseja dispensar na UFSM (Destino) e envie o plano de ensino da disciplina que você já cursou na Instituição de Origem. O sistema gerará um índice provisório e permitirá que a coordenação certifique o pedido.
                  </div>
@@ -177,7 +223,13 @@ export default function Home() {
                          </div>
                        ))}
                      </div>
-                     <ProgramInput key={`ext-${extIds.length}`} tipo="externo" title={extIds.length > 0 ? "➕ Adicionar Outra Disciplina de Origem" : "📄 Disciplina de Origem (Aproveitamento)"} onProgramCreated={(id) => setExtIds([...extIds, id])} />
+                     <ProgramInput key={`ext-${extIds.length}`} tipo="externo" title={extIds.length > 0 ? "➕ Adicionar Outra Disciplina de Origem" : "📄 Disciplina de Origem (Aproveitamento)"} onProgramCreated={(id, data) => {
+                        if (extIds.includes(id)) {
+                          alert(`⚠️ Esta disciplina (${data?.codigo || id}) já foi adicionada à lista de origem. Não é possível incluir duplicatas.`);
+                          return;
+                        }
+                        setExtIds([...extIds, id]);
+                      }} />
                    </div>
                  </div>
               </>

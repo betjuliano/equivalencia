@@ -31,10 +31,12 @@ class IndexStore:
         await self._save("index_programas_ufsm.json", {"version": "1.0", "items": items})
 
     async def search_ufsm_programs(self, curso: Optional[str] = None, query: Optional[str] = None) -> List[Dict]:
+        from src.utils import slugify
         idx = await self._load("index_programas_ufsm.json")
         items: List = idx.get("items", [])
         if curso:
-            items = [i for i in items if curso.lower() in i.get("curso_slug", "").lower()]
+            c_slug = slugify(curso)
+            items = [i for i in items if c_slug in i.get("curso_slug", "").lower()]
         if query:
             q = query.lower()
             items = [i for i in items if q in i.get("nome", "").lower() or q in i.get("codigo", "").lower()]
@@ -92,11 +94,13 @@ class IndexStore:
         await self._save("index_consulta_publica.json", {"version": "1.0", "items": items})
 
     async def search_consulta_publica(self, curso: Optional[str] = None, disciplina: Optional[str] = None) -> List[Dict]:
+        from src.utils import slugify
         idx = await self._load("index_consulta_publica.json")
         items: List = idx.get("items", [])
         items = [i for i in items if i.get("status") == "certificada"]
         if curso:
-            items = [i for i in items if curso.lower() in i.get("curso_slug", "").lower()]
+            c_slug = slugify(curso)
+            items = [i for i in items if c_slug in i.get("curso_slug", "").lower()]
         if disciplina:
             d = disciplina.lower()
             items = [i for i in items if d in i.get("disciplina_codigo", "").lower() or d in i.get("disciplina_nome", "").lower()]

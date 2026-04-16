@@ -14,7 +14,46 @@
       "resultado_tecnico": "pre_aprovavel_tecnicamente",
       "resultado_final": "pendente_certificacao",
       "criado_em": "2026-03-27T12:37:23.253442+00:00"
+    },
+    {
+      "id": "analise_20260410T123258Z_24f38a",
+      "ufsm_program_id": "ufsm_JUR1120",
+      "external_program_id": "ext_ufsm_direito_cooperativo_696f7a",
+      "external_program_ids": [
+        "ext_ufsm_direito_cooperativo_696f7a"
+      ],
+      "content_score": 1.25,
+      "workload_score": 100.0,
+      "resultado_tecnico": "nao_atende_tecnicamente",
+      "resultado_final": "nao_atende_tecnicamente",
+      "criado_em": "2026-04-10T12:32:59.297556+00:00"
+    },
+    {
+      "id": "analise_20260410T124424Z_055a72",
+      "ufsm_program_id": "ufsm_JUR1120",
+      "external_program_id": "ext_ufsm_direito_cooperativo_696f7a",
+      "external_program_ids": [
+        "ext_ufsm_direito_cooperativo_696f7a"
+      ],
+      "content_score": 1.25,
+      "workload_score": 100.0,
+      "resultado_tecnico": "nao_atende_tecnicamente",
+      "resultado_final": "nao_atende_tecnicamente",
+      "criado_em": "2026-04-10T12:44:25.638180+00:00"
+    },
+    {
+      "id": "analise_20260410T124508Z_1f87e2",
+      "ufsm_program_id": "ufsm_JUR1120",
+      "external_program_id": "ext_ufsm_direito_cooperativo_696f7a",
+      "external_program_ids": [
+        "ext_ufsm_direito_cooperativo_696f7a"
+      ],
+      "content_score": 1.25,
+      "workload_score": 100.0,
+      "resultado_tecnico": "nao_atende_tecnicamente",
+      "resultado_final": "nao_atende_tecnicamente",
+      "criado_em": "2026-04-10T12:45:08.909668+00:00"
     }
   ],
-  "updated_at": "2026-03-27T12:37:23.253442+00:00"
+  "updated_at": "2026-04-10T12:45:08.909668+00:00"
 }

@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  equivalencia-backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    image: equivalencia-backend:latest
+    environment:
+      - DOMAIN=ondecursar.iaprojetos.com.br
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=iaprojetos"
+        
+        # Backend API roteada em api.ondecursar... (Opcional, porém facilita se quiser chamar direto)
+        - "traefik.http.routers.equivalencia-api-http.rule=Host(`api.ondecursar.iaprojetos.com.br`)"
+        - "traefik.http.routers.equivalencia-api-http.entrypoints=web"
+        - "traefik.http.routers.equivalencia-api-http.middlewares=redirect-to-https"
+        
+        - "traefik.http.routers.equivalencia-api.rule=Host(`api.ondecursar.iaprojetos.com.br`)"
+        - "traefik.http.routers.equivalencia-api.entrypoints=websecure"
+        - "traefik.http.routers.equivalencia-api.tls=true"
+        - "traefik.http.routers.equivalencia-api.tls.certresolver=letsencryptresolver"
+        
+        - "traefik.http.services.equivalencia-api.loadbalancer.server.port=3008"
+        
+        - "com.docker.compose.project=equivalencias"
+        - "com.docker.compose.service=backend"
+    networks:
+      - iaprojetos
+    volumes:
+      - equivalencia-data:/app/data
+      - equivalencia-temp:/app/temp
+
+  equivalencia-frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: equivalencia-frontend:latest
+    environment:
+      # Chamadas do browser vão pro próprio domínio (/api/v1), o Server via Next rewrites aponta pro backend
+      - BACKEND_URL=http://equivalencia-backend:3008
+      - NEXT_PUBLIC_API_URL=http://equivalencia-backend:3008/api/v1
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=iaprojetos"
+        
+        # Frontend Principal - HTTP para HTTPS
+        - "traefik.http.routers.equivalencias-http.rule=Host(`ondecursar.iaprojetos.com.br`)"
+        - "traefik.http.routers.equivalencias-http.entrypoints=web"
+        - "traefik.http.routers.equivalencias-http.middlewares=redirect-to-https"
+        
+        # Securing App
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+        
+        - "traefik.http.routers.equivalencias.rule=Host(`ondecursar.iaprojetos.com.br`)"
+        - "traefik.http.routers.equivalencias.entrypoints=websecure"
+        - "traefik.http.routers.equivalencias.tls=true"
+        - "traefik.http.routers.equivalencias.tls.certresolver=letsencryptresolver"
+        
+        - "traefik.http.services.equivalencias.loadbalancer.server.port=3000"
+        
+        - "com.docker.compose.project=equivalencias"
+        - "com.docker.compose.service=frontend"
+    networks:
+      - iaprojetos
+
+volumes:
+  equivalencia-data:
+  equivalencia-temp:
+
+networks:
+  iaprojetos:
+    external: true

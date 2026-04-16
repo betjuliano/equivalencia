@@ -38,3 +38,22 @@ async def upload_pdf(
         "path": f"data/uploads/pdf/{upload_id}.pdf",
         "filename": file.filename,
     }
+
+
+@router.get("/uploads/pdf/{upload_id}/metadata")
+async def get_pdf_metadata(
+    upload_id: str,
+    upload_dir: Path = Depends(get_upload_dir),
+):
+    from src.infrastructure.pdf_extractor import extract_text_from_pdf, extract_metadata_from_text
+    path = upload_dir / f"{upload_id}.pdf"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Arquivo não encontrado")
+    
+    text = await extract_text_from_pdf(path)
+    if not text:
+        return {"codigo": None, "nome": None, "instituicao": None, "ch": None, "text": ""}
+        
+    metadata = extract_metadata_from_text(text)
+    metadata["text"] = text
+    return metadata

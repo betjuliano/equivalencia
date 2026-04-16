@@ -20,8 +20,8 @@ export default function Login() {
   return (
     <div className="container" style={{ maxWidth: '400px', margin: '4rem auto' }}>
       <div className="card">
-        <div style={{ textAlign: 'center', fontSize: '3rem', marginBottom: '1rem' }}>📖</div>
-        <h2 className="card-title" style={{ justifyContent: 'center', marginBottom: '0.5rem' }}>S.ADM</h2>
+        <div style={{ textAlign: 'center', fontSize: '3rem', marginBottom: '1rem' }}>🎓</div>
+        <h2 className="card-title" style={{ justifyContent: 'center', marginBottom: '0.5rem' }}>Equivale UFSM</h2>
         <p className="text-center text-muted text-sm mb-3">Acesso restrito à Coordenação de Curso</p>
         
         {err && <div className="alert alert-error">{err}</div>}

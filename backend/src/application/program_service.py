@@ -156,6 +156,7 @@ class ProgramService:
             "nome": nome,
             "instituicao": instituicao,
             "instituicao_slug": inst_slug,
+            "curso": curso_origem,
             "carga_horaria": ch,
         })
         log_audit("criar_programa_externo", usuario, [programa_id])
@@ -176,9 +177,9 @@ class ProgramService:
         ext_items = await self.index_store.search_external_programs()
         for item in ext_items:
             if item["id"] == program_id:
-                # We need inst, curso and codigo for the new path
+                # Use 'curso' from index, fallback to 'curso_origem' or 'Desconhecido'
                 instituicao = item.get("instituicao", "Desconhecida")
-                curso = item.get("curso_origem", item.get("curso", "Desconhecido"))
+                curso = item.get("curso", item.get("curso_origem", "Desconhecido"))
                 codigo = item.get("codigo", "S_COD")
                 path = self._ext_path(instituicao, curso, codigo)
                 return await read_json(path)
@@ -198,10 +199,14 @@ class ProgramService:
         nota: Optional[float] = None,
         aprovado: Optional[bool] = None,
         usuario: Optional[str] = None,
+        ementa_texto: Optional[str] = None,
     ) -> ProgramaExterno:
-        text = await extract_text_from_pdf(pdf_path)
-        if not text:
-            text = f"[Texto não extraído de {pdf_path.name}]"
+        if ementa_texto and len(ementa_texto.strip()) > 10:
+            text = ementa_texto
+        else:
+            text = await extract_text_from_pdf(pdf_path)
+            if not text:
+                text = f"[Texto não extraído de {pdf_path.name}]"
         return await self.cadastrar_externo(
             codigo=codigo,
             nome=nome,
@@ -212,5 +217,26 @@ class ProgramService:
             nota=nota,
             aprovado=aprovado,
             arquivo_origem=str(pdf_path),
+            usuario=usuario,
+        )
+
+    async def cadastrar_ufsm_por_pdf(
+        self,
+        pdf_path: Path,
+        codigo: str,
+        nome: str,
+        curso: str,
+        carga_horaria_informada: Optional[float] = None,
+        usuario: Optional[str] = None,
+    ) -> ProgramaUFSM:
+        text = await extract_text_from_pdf(pdf_path)
+        if not text:
+            text = f"[Texto não extraído de {pdf_path.name}]"
+        return await self.cadastrar_ufsm(
+            codigo=codigo,
+            nome=nome,
+            curso=curso,
+            raw_text=text,
+            carga_horaria_informada=carga_horaria_informada,
             usuario=usuario,
         )

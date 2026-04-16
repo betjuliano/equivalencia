@@ -10,8 +10,8 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link href="/" className="navbar-brand">
-        <span className="logo">📖</span>
-        <span>S.ADM</span>
+        <span className="logo">🎓</span>
+        <span>Equivale UFSM</span>
       </Link>
       <div className="navbar-links">
         <Link href="/">Início</Link>

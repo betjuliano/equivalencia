@@ -3,8 +3,11 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'Curriculum Equivalence Analyzer — UFSM',
-  description: 'Sistema de apoio à análise de equivalência de disciplinas — Resolução UFSM nº 209/2025',
+  title: 'Equivale UFSM — Análise de Equivalência de Disciplinas',
+  description: 'Sistema de apoio à análise de equivalência de disciplinas — Universidade Federal de Santa Maria',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -67,7 +67,7 @@ async def create_analysis(
 async def get_reusable_analyses(
     ufsm_program_id: str,
     external_query: Optional[str] = None,
-    current_user: TokenData = Depends(get_current_user),
+    current_user: Optional[TokenData] = Depends(get_current_user_optional),
     svc=Depends(get_analysis_service),
 ):
     return await svc.search_reusable(ufsm_program_id, external_query)

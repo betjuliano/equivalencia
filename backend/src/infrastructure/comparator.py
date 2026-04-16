@@ -255,12 +255,12 @@ def _classify(score: float) -> Tuple[MatchClassification, float]:
         return MatchClassification.AUSENTE, 0.0
 
 
-# Configurable weights
+# Configurable weights (Tuned for structured topic comparisons)
 WEIGHTS = {
-    "cosine_tfidf": 0.55,
-    "overlap_keywords": 0.20,
-    "ngram_similarity": 0.15,
-    "synonym_bonus": 0.10,
+    "cosine_tfidf": 0.45,
+    "overlap_keywords": 0.30,
+    "ngram_similarity": 0.10,
+    "synonym_bonus": 0.15,
 }
 
 

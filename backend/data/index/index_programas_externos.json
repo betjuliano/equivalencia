@@ -16,7 +16,16 @@
       "instituicao": "Uni",
       "instituicao_slug": "uni",
       "carga_horaria": 30
+    },
+    {
+      "id": "ext_ufsm_direito_cooperativo_696f7a",
+      "codigo": "DPADP0210",
+      "nome": "DIREITO COOPERATIVO",
+      "instituicao": "UFSM",
+      "instituicao_slug": "ufsm",
+      "curso": "GESTAO_DE_COOPERATIVAS",
+      "carga_horaria": 60.0
     }
   ],
-  "updated_at": "2026-03-27T12:37:22.638964+00:00"
+  "updated_at": "2026-04-10T12:45:07.522325+00:00"
 }

@@ -23,11 +23,11 @@ from src.domain.enums import CargoHorariaFonte as CHFonte
 # ─── Regex patterns ─────────────────────────────────────────────────────────
 
 UNIDADE_RE = re.compile(
-    r"^\s*(?:UNIDADE\s+TEMÁTICA\s+|UNIDADE\s+|MÓDULO\s+)(\w+)[:\s–-]*(.*)?$",
+    r"^\s*(?:UNIDADE\s+TEMÁTICA\s+|UNIDADE\s+|MÓDULO\s+)?(?:[A-Z0-9]+)[\.\-:\)]*\s+(.*)$",
     re.IGNORECASE | re.MULTILINE,
 )
-TOPICO_RE = re.compile(r"^\s*(\d+\.\d+)\s+(.+)$", re.MULTILINE)
-SUBTOPICO_RE = re.compile(r"^\s*(\d+\.\d+\.\d+)\s+(.+)$", re.MULTILINE)
+TOPICO_RE = re.compile(r"^\s*(?:[A-Z]\)|[0-9]+[\.\-\)])\s+(.+)$", re.MULTILINE)
+SUBTOPICO_RE = re.compile(r"^\s*(\d+\.\d+(?:\.\d+)?)\s+(.+)$", re.MULTILINE)
 
 BIBLIO_START_RE = re.compile(
     r"^\s*(REFERÊNCIAS|BIBLIOGRAFIA(?:\s+BÁSICA)?(?:\s+COMPLEMENTAR)?)[\s:]*$",
@@ -117,14 +117,12 @@ def parse_program(text: str) -> Tuple[ProgramaEstruturado, Optional[float], CHFo
         top_matches = list(TOPICO_RE.finditer(block))
 
         for tm in top_matches:
-            num = tm.group(1)
-            txt = tm.group(2).strip()
-            subs = [
-                Subtopico(numero=sm.group(1), texto=sm.group(2).strip())
-                for sm in sub_matches
-                if sm.group(1).startswith(num + ".")
-            ]
-            topicos.append(Topico(numero=num, texto=txt, subtopicos=subs))
+            # We don't rely heavily on subtopics extraction now because top_matches catches a lot
+            # We'll just extract the text
+            txt = tm.group(1).strip() if len(tm.groups()) == 1 else tm.group(0).strip()
+            # If nothing was captured in groups just use the whole line
+            
+            topicos.append(Topico(numero=str(len(topicos)+1), texto=txt, subtopicos=[]))
         return topicos
 
     if unidade_boundaries:
@@ -133,10 +131,11 @@ def parse_program(text: str) -> Tuple[ProgramaEstruturado, Optional[float], CHFo
             end = unidade_boundaries[i + 1].start() if i + 1 < len(unidade_boundaries) else len(content_text)
             block = content_text[start:end]
             topicos = _extract_topicos(block)
+            match_str = um.group(1).strip() if um.group(1) else "Nova Unidade"
             unidades.append(
                 Unidade(
-                    numero=um.group(1),
-                    titulo=um.group(2).strip() if um.group(2) else f"Unidade {um.group(1)}",
+                    numero=str(i + 1),
+                    titulo=match_str,
                     topicos=topicos,
                 )
             )

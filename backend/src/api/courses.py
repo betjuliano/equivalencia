@@ -1,6 +1,7 @@
 """Endpoints to manage UFSM Courses and disciplines (CursosUFSM)."""
 import os
 import json
+import asyncio
 from pathlib import Path
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
@@ -40,14 +41,30 @@ class DisciplinaCriacaoSchema(BaseModel):
 def _get_curso_dir(curso_nome: str) -> Path:
     return CURSOS_DIR / sanitize_filename(curso_nome)
 
+def _load_cursos_sync() -> list:
+    """Blocking I/O — run in executor."""
+    if not CURSOS_DIR.exists():
+        return []
+    return sorted(d.name for d in CURSOS_DIR.iterdir() if d.is_dir())
+
+def _load_disciplinas_sync(curso_dir: Path) -> list:
+    """Blocking I/O — run in executor."""
+    disciplinas = []
+    for f in curso_dir.glob("*.json"):
+        try:
+            with open(f, "r", encoding="utf-8") as fh:
+                disciplinas.append(json.load(fh))
+        except Exception:
+            pass
+    disciplinas.sort(key=lambda x: (x.get("semestre") or 99, x.get("nome", "")))
+    return disciplinas
+
 @router.get("/cursos")
 async def list_cursos():
     """List all available UFSM courses."""
-    if not CURSOS_DIR.exists():
-        return {"cursos": []}
-    
-    cursos = [d.name for d in CURSOS_DIR.iterdir() if d.is_dir()]
-    return {"cursos": sorted(cursos)}
+    loop = asyncio.get_event_loop()
+    cursos = await loop.run_in_executor(None, _load_cursos_sync)
+    return {"cursos": cursos}
 
 
 @router.get("/cursos/{curso_nome}/disciplinas")
@@ -56,18 +73,9 @@ async def list_disciplinas(curso_nome: str):
     curso_dir = _get_curso_dir(curso_nome)
     if not curso_dir.exists():
         raise HTTPException(status_code=404, detail="Curso não encontrado")
-    
-    disciplinas = []
-    for f in curso_dir.glob("*.json"):
-        try:
-            with open(f, "r", encoding="utf-8") as file:
-                data = json.load(file)
-                disciplinas.append(data)
-        except Exception:
-            pass
-            
-    # Sort by semester then name
-    disciplinas.sort(key=lambda x: (x.get("semestre") or 99, x.get("nome", "")))
+
+    loop = asyncio.get_event_loop()
+    disciplinas = await loop.run_in_executor(None, _load_disciplinas_sync, curso_dir)
     return {"curso": curso_nome, "total": len(disciplinas), "disciplinas": disciplinas}
 
 

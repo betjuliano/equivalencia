@@ -1,0 +1,445 @@
+{
+  "id": "analise_20260410T124424Z_055a72",
+  "ufsm_program_id": "ufsm_JUR1120",
+  "external_program_id": "ext_ufsm_direito_cooperativo_696f7a",
+  "external_program_ids": [
+    "ext_ufsm_direito_cooperativo_696f7a"
+  ],
+  "threshold_content": 75.0,
+  "threshold_workload": 75.0,
+  "content_score": 1.25,
+  "workload_score": 100.0,
+  "resultado_tecnico": "nao_atende_tecnicamente",
+  "resultado_final": "nao_atende_tecnicamente",
+  "reused_from_analysis_id": "analise_20260410T123258Z_24f38a",
+  "workload": {
+    "ufsm": 60.0,
+    "externo": 60.0,
+    "fonte_ufsm": "manual",
+    "fonte_externo": "manual"
+  },
+  "matches": [
+    {
+      "ufsm_item": "CONCEITOS FUNDAMENTAIS DO DIREITO TRIBUTÁRIO",
+      "externo_item": "- Conceitos fundamentais: noções de sistema jurídico",
+      "score_bruto": 0.457,
+      "score_final": 0.4689,
+      "palavras_coincidentes": [
+        "conceitos",
+        "fundamentais"
+      ],
+      "bonus_sinonimos": true,
+      "classificacao": "parcialmente_equivalente",
+      "pontuacao": 0.5
+    },
+    {
+      "ufsm_item": "- Conceito.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Fontes.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Princípios.",
+      "externo_item": "- Os princípios da liberdade de associação e autogestão",
+      "score_bruto": 0.4645,
+      "score_final": 0.3055,
+      "palavras_coincidentes": [
+        "princípios"
+      ],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "SISTEMA CONSTITUCIONAL TRIBUTÁRIO",
+      "externo_item": "O SISTEMA COOPERATIVO NA CONSTITUIÇÃO FEDERAL DE 1988",
+      "score_bruto": 0.2672,
+      "score_final": 0.2969,
+      "palavras_coincidentes": [
+        "sistema"
+      ],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Competência tributária.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Limitação da competência tributária.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "ESPÉCIES DE TRIBUTOS",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Tributos da União.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Tributos dos Estados.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Tributos dos Municípios.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "OBRIGAÇÃO TRIBUTÁRIA",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Natureza.",
+      "externo_item": "- As sociedades cooperativas e sua natureza jurídica",
+      "score_bruto": 0.5197,
+      "score_final": 0.3358,
+      "palavras_coincidentes": [
+        "natureza"
+      ],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Fontes.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Elementos.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Fato gerador.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Lançamento.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Espécie.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Efeitos.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Suspensão.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Extinção e exclusão do crédito tributário e formas por que se processam.",
+      "externo_item": "A REGULAMENTAÇÃO DAS COOPERATIVAS DE CRÉDITO",
+      "score_bruto": 0.1979,
+      "score_final": 0.1422,
+      "palavras_coincidentes": [
+        "crédito"
+      ],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "CRÉDITO TRIBUTÁRIO",
+      "externo_item": "A REGULAMENTAÇÃO DAS COOPERATIVAS DE CRÉDITO",
+      "score_bruto": 0.4125,
+      "score_final": 0.2935,
+      "palavras_coincidentes": [
+        "crédito"
+      ],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Origem.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Extinção.",
+      "externo_item": "- Conceitos fundamentais: noções de sistema jurídico",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "ADMINISTRAÇÃO TRIBUTÁRIA",
+      "externo_item": "- A estrutura das cooperativas: conselho de administração e conselho fiscal.",
+      "score_bruto": 0.2576,
+      "score_final": 0.2817,
+      "palavras_coincidentes": [
+        "administração"
+      ],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Arrecadação.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Destinação.",
+      "externo_item": "- Conceitos fundamentais: noções de sistema jurídico",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "PROCESSO TRIBUTÁRIO",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Procedimentos administrativos.",
+      "externo_item": "- Conceitos fundamentais: noções de sistema jurídico",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Espécies.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Graus.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Competência.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Procedimento judicial.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Espécie.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Competência.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Duplo grau de jurisdição.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Efeitos da decisão.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.0,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": false,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "PLANEJAMENTO TRIBUTÁRIO NA EMPRESA",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Objetivos.",
+      "externo_item": "- Conceitos fundamentais: noções de sistema jurídico",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    },
+    {
+      "ufsm_item": "- Evasão legal.",
+      "externo_item": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+      "score_bruto": 0.0,
+      "score_final": 0.1,
+      "palavras_coincidentes": [],
+      "bonus_sinonimos": true,
+      "classificacao": "ausente",
+      "pontuacao": 0.0
+    }
+  ],
+  "alertas": [],
+  "observacoes_tecnicas": "Score de conteúdo: 1.25% (limiar: 75.0%)\nScore de carga horária: 100.00% (limiar: 75.0%)\nTotal de itens comparados (UFSM): 40",
+  "metadados": {
+    "criado_por": "aluno_publico",
+    "criado_em": "2026-04-10T12:44:25.635171+00:00",
+    "algoritmo_versao": "1.0.0"
+  }
+}

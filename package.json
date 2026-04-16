@@ -5,7 +5,14 @@
   "scripts": {
     "dev:backend": "cd backend && python run.py",
     "dev:frontend": "cd frontend && npm run dev",
-    "dev": "npm run dev:backend & npm run dev:frontend",
-    "install:all": "cd frontend && npm install && cd ../backend && pip install -r requirements.txt"
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "test:health": "curl -f http://127.0.0.1:3008/api/v1/health",
+    "install:all": "cd frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "isomorphic-git": "^1.37.5"
   }
 }

@@ -1,40 +1,63 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { getAnalysis, updateWorkload, searchReusable, getToken } from '@/lib/api';
 
 export default function AnalysisResultView({ analysisId }: { analysisId: string }) {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [updateError, setUpdateError] = useState<string | null>(null);
   const [ufsmCh, setUfsmCh] = useState('');
   const [extCh, setExtCh] = useState('');
   const [reusable, setReusable] = useState<any[]>([]);
-  const isCoord = !!getToken(); // if coordinator is logged in
+  const isCoord = !!getToken();
 
-  const loadData = async () => {
+  const loadData = useCallback(async (signal?: AbortSignal) => {
+    setLoadError(null);
     try {
       const res = await getAnalysis(analysisId);
+      if (signal?.aborted) return;
       setData(res);
-      const reus = await searchReusable(res.ufsm_program_id);
-      setReusable(reus.filter((r: any) => r.id !== res.id));
-    } catch { alert('Erro ao carregar'); }
-    finally { setLoading(false); }
-  };
 
-  useEffect(() => { loadData(); }, [analysisId]);
+      // searchReusable is optional — don't let it block the result view
+      try {
+        if (res.ufsm_program_id) {
+          const reus = await searchReusable(res.ufsm_program_id);
+          if (!signal?.aborted && Array.isArray(reus)) {
+            setReusable(reus.filter((r: any) => r.id !== res.id));
+          }
+        }
+      } catch {
+        // Silently ignore — reusable history is informational only
+      }
+    } catch (err: any) {
+      if (!signal?.aborted) setLoadError(err.message || 'Erro ao carregar análise.');
+    } finally {
+      if (!signal?.aborted) setLoading(false);
+    }
+  }, [analysisId]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    loadData(controller.signal);
+    return () => controller.abort();
+  }, [loadData]);
 
   const handleUpdateCH = async () => {
-    if (!isCoord) { alert('Apenas a coordenação pode alterar a CH manual.'); return; }
+    if (!isCoord) { setUpdateError('Apenas a coordenação pode alterar a CH manual.'); return; }
+    setUpdateError(null);
     try {
       await updateWorkload(analysisId, {
         ufsm_carga_horaria: ufsmCh ? Number(ufsmCh) : undefined,
         externo_carga_horaria: extCh ? Number(extCh) : undefined,
       });
       loadData();
-    } catch { alert('Erro ao atualizar CH'); }
+    } catch (err: any) { setUpdateError(err.message || 'Erro ao atualizar CH'); }
   };
 
   if (loading) return <div className="loading-overlay"><div className="spinner"></div><p>Analisando currículos...</p></div>;
+  if (loadError) return <div className="alert alert-error">{loadError} <button className="btn btn-outline btn-sm ml-2" onClick={() => { setLoading(true); loadData(); }}>Tentar novamente</button></div>;
   if (!data) return <div className="alert alert-error">Análise não encontrada.</div>;
 
   const cScore = data.content_score || 0;
@@ -42,6 +65,7 @@ export default function AnalysisResultView({ analysisId }: { analysisId: string 
 
   return (
     <div className="fade-in mt-4 border-t border-border pt-4">
+      {updateError && <div className="alert alert-error mb-3">{updateError}</div>}
       <div className="flex justify-between items-center mb-4">
         <div>
           <h2 className="text-xl font-bold mb-1">Resultado da Análise Preliminar</h2>

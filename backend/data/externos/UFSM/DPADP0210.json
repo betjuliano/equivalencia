@@ -1,0 +1,162 @@
+{
+  "id": "ext_ufsm_direito_cooperativo_696f7a",
+  "tipo": "externo",
+  "codigo": "DPADP0210",
+  "nome": "DIREITO COOPERATIVO",
+  "instituicao": "UFSM",
+  "instituicao_slug": "ufsm",
+  "curso_origem": "",
+  "carga_horaria": 60.0,
+  "carga_horaria_fonte": "manual",
+  "modalidade": "presencial",
+  "nota": null,
+  "aprovado": null,
+  "possui_extensao": false,
+  "e_estagio": false,
+  "e_tcc": false,
+  "programa_original": "UNIVERSIDADE FEDERAL DE SANTA MARIA - UFSM Data: 16/05/2019\nHora: 16:04\nPrograma de disciplina de graduação IP: 192.168.42.32\nDados da Disciplina\nDepartamento: DEPARTAMENTO DE ENSINO\nCódigo: DPADP0210 Carga Horária 60 Créditos: 4\nNome: DIREITO COOPERATIVO\nObjetivos\nConhecer a legislação cooperativa, visualizando em especial o marco legal e regulatório das sociedades\ncooperativas, e as demais leis que tratam do tema.\nConteúdo Programático\nPROGRAMA\nUNIDADE 1 - INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO\n1.1 - Conceitos fundamentais: noções de sistema jurídico\n1.2 - As sociedades cooperativas e sua natureza jurídica\n1.3 - A legislação cooperativa e sua evolução histórica no Brasil\nUNIDADE 2 - O SISTEMA COOPERATIVO NA CONSTITUIÇÃO FEDERAL DE 1988\n2.1 - Os princípios da liberdade de associação e autogestão\n2.2 - As cooperativas no código civil brasileiro de 2002\nUNIDADE 3 - A LEI DAS COOPERATIVAS - LEI N.º 5.764 DE 16 DE DEZEMBRO DE 1971\n3.1 - Requisitos para formação de uma sociedade cooperativa\n3.2 - O capital social das cooperativas\n3.3 - Direitos e deveres dos associados\n3.4 - A estrutura das cooperativas: conselho de administração e conselho fiscal.\nFundos obrigatórios\n3.5 - Fusão, incorporação, desmembramento e dissolução das sociedades\ncooperativas\n3.6 - Fiscalização e controle\nUNIDADE 4 - AS COOPERATIVAS DE TRABALHO E SUA LEGISLAÇÃO\n4.1 - Lei Federal n. 12.690 de 19 de julho de 2012\nUNIDADE 5 - A REGULAMENTAÇÃO DAS COOPERATIVAS DE CRÉDITO\n5.1 - A Lei Complementar n. 130, de 17 de abril de 2009\n5.2 - Constituição e funcionamento das cooperativas de crédito - Resolução n.\n4.434, de 05 de agosto de 2015\nUNIDADE 6 - AS COOPERATIVAS DE SAÚDE\n6.1 - Estrutura e funcionamento\nBIBLIOGRAFIA\nBIBLIOGRAFIA BÁSICA\nKRUEGAL, G. Cooperativas na ordem econômica constitucional teoria e direito. 3. ed. Belo Horizonte: Mandamentos, 2008.\nMIRANDA, J. E. de.; GALHARDO, J. H. S.; VIEIRA, P. G. L. Regime jurídico da sociedade cooperativa. São Paulo: Juruá, 2013.\nPOLONIO, W. A. Manual das sociedades cooperativas. 3. ed. São Paulo: Atlas, 2001.\nBIBLIOGRAFIA COMPLEMENTAR\nFABRETTI, L. C. Direito tributário aplicado: impostos e contribuições das empresas. São Paulo: Atlas, 2006.\nIRION, J. E. O. Cooperativismo e economia social. São Paulo: STS, 1997.\nNASCIMENTO, C. V. do. Teoria geral dos atos cooperativos. São Paulo: Malheiros, 2007.\nROSSI, A. C. S. Cooperativismo: a luz dos princípios constitucionais. São Paulo: Juruá, 2005.\nYOUNG, L. H. B. Entidades sem fins lucrativos imunidade e isenção tributária: resumo prático. 4. ed. rev. e atual. Curitiba: Juruá, 2008.\nAutenticação: 5B4F.5782.08B1.2C53.4065.E617.0A9E.EA35 consulte em http://www.ufsm.br/autenticacao Página: 1\nDetalhes do documento em http://portal.ufsm.br/documentos\nUNIVERSIDADE FEDERAL DE SANTA MARIA - UFSM Data: 16/05/2019\nHora: 16:04\nPrograma de disciplina de graduação IP: 192.168.42.32\nDocumento originado com base no ementário do Projeto Pedagógico do Curso. Página: 2\nAutenticação: 5B4F.5782.08B1.2C53.4065.E617.0A9E.EA35 consulte em http://www.ufsm.br/autenticacao\nDetalhes do documento em http://portal.ufsm.br/documentos",
+  "programa_estruturado": {
+    "unidades": [
+      {
+        "numero": "1",
+        "titulo": "INTRODUÇÃO AO ESTUDO DO DIREITO COOPERATIVO",
+        "topicos": [
+          {
+            "numero": "1.1",
+            "texto": "- Conceitos fundamentais: noções de sistema jurídico",
+            "subtopicos": []
+          },
+          {
+            "numero": "1.2",
+            "texto": "- As sociedades cooperativas e sua natureza jurídica",
+            "subtopicos": []
+          },
+          {
+            "numero": "1.3",
+            "texto": "- A legislação cooperativa e sua evolução histórica no Brasil",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "2",
+        "titulo": "O SISTEMA COOPERATIVO NA CONSTITUIÇÃO FEDERAL DE 1988",
+        "topicos": [
+          {
+            "numero": "2.1",
+            "texto": "- Os princípios da liberdade de associação e autogestão",
+            "subtopicos": []
+          },
+          {
+            "numero": "2.2",
+            "texto": "- As cooperativas no código civil brasileiro de 2002",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "3",
+        "titulo": "A LEI DAS COOPERATIVAS - LEI N.º 5.764 DE 16 DE DEZEMBRO DE 1971",
+        "topicos": [
+          {
+            "numero": "3.1",
+            "texto": "- Requisitos para formação de uma sociedade cooperativa",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.2",
+            "texto": "- O capital social das cooperativas",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.3",
+            "texto": "- Direitos e deveres dos associados",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.4",
+            "texto": "- A estrutura das cooperativas: conselho de administração e conselho fiscal.",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.5",
+            "texto": "- Fusão, incorporação, desmembramento e dissolução das sociedades",
+            "subtopicos": []
+          },
+          {
+            "numero": "3.6",
+            "texto": "- Fiscalização e controle",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "4",
+        "titulo": "AS COOPERATIVAS DE TRABALHO E SUA LEGISLAÇÃO",
+        "topicos": [
+          {
+            "numero": "4.1",
+            "texto": "- Lei Federal n. 12.690 de 19 de julho de 2012",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "5",
+        "titulo": "A REGULAMENTAÇÃO DAS COOPERATIVAS DE CRÉDITO",
+        "topicos": [
+          {
+            "numero": "5.1",
+            "texto": "- A Lei Complementar n. 130, de 17 de abril de 2009",
+            "subtopicos": []
+          },
+          {
+            "numero": "5.2",
+            "texto": "- Constituição e funcionamento das cooperativas de crédito - Resolução n.",
+            "subtopicos": []
+          }
+        ]
+      },
+      {
+        "numero": "6",
+        "titulo": "AS COOPERATIVAS DE SAÚDE",
+        "topicos": [
+          {
+            "numero": "6.1",
+            "texto": "- Estrutura e funcionamento",
+            "subtopicos": []
+          }
+        ]
+      }
+    ]
+  },
+  "bibliografia": {
+    "basica": [
+      "KRUEGAL, G. Cooperativas na ordem econômica constitucional teoria e direito. 3. ed. Belo Horizonte: Mandamentos, 2008.",
+      "MIRANDA, J. E. de.; GALHARDO, J. H. S.; VIEIRA, P. G. L. Regime jurídico da sociedade cooperativa. São Paulo: Juruá, 2013.",
+      "POLONIO, W. A. Manual das sociedades cooperativas. 3. ed. São Paulo: Atlas, 2001."
+    ],
+    "complementar": [
+      "FABRETTI, L. C. Direito tributário aplicado: impostos e contribuições das empresas. São Paulo: Atlas, 2006.",
+      "IRION, J. E. O. Cooperativismo e economia social. São Paulo: STS, 1997.",
+      "NASCIMENTO, C. V. do. Teoria geral dos atos cooperativos. São Paulo: Malheiros, 2007.",
+      "ROSSI, A. C. S. Cooperativismo: a luz dos princípios constitucionais. São Paulo: Juruá, 2005.",
+      "YOUNG, L. H. B. Entidades sem fins lucrativos imunidade e isenção tributária: resumo prático. 4. ed. rev. e atual. Curitiba: Juruá, 2008.",
+      "Autenticação: 5B4F.5782.08B1.2C53.4065.E617.0A9E.EA35 consulte em http://www.ufsm.br/autenticacao Página: 1",
+      "Detalhes do documento em http://portal.ufsm.br/documentos",
+      "UNIVERSIDADE FEDERAL DE SANTA MARIA - UFSM Data: 16/05/2019",
+      "Hora: 16:04",
+      "Programa de disciplina de graduação IP: 192.168.42.32",
+      "Documento originado com base no ementário do Projeto Pedagógico do Curso. Página: 2",
+      "Autenticação: 5B4F.5782.08B1.2C53.4065.E617.0A9E.EA35 consulte em http://www.ufsm.br/autenticacao",
+      "Detalhes do documento em http://portal.ufsm.br/documentos"
+    ]
+  },
+  "metadados": {
+    "versao_ppc": null,
+    "origem_importacao": "envio_usuario",
+    "arquivo_origem": "data\\uploads\\pdf\\87acaf78-f1bf-4a21-8a1e-f99cf3761bb3.pdf",
+    "criado_em": "2026-04-10T12:32:55.998613+00:00",
+    "atualizado_em": "2026-04-10T12:32:55.998613+00:00"
+  }
+}

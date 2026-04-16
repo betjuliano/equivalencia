@@ -1,9 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getAnalysis, certify, getCertification } from '@/lib/api';
 
-export default function Certification({ params }: { params: { id: string } }) {
+export default function Certification({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
   const searchParams = useSearchParams();
   const isCreate = searchParams.get('create') === 'true';
@@ -22,17 +23,17 @@ export default function Certification({ params }: { params: { id: string } }) {
     async function load() {
       try {
         if (isCreate) {
-          const res = await getAnalysis(params.id);
+          const res = await getAnalysis(id);
           setData(res);
         } else {
-          const res = await getCertification(params.id);
+          const res = await getCertification(id);
           setCert(res);
         }
       } catch { alert('Erro ao carregar'); }
       finally { setLoading(false); }
     }
     load();
-  }, [params.id, isCreate]);
+  }, [id, isCreate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,15 +41,15 @@ export default function Certification({ params }: { params: { id: string } }) {
     try {
       if (!data) return;
       await certify({
-        analysis_id: params.id,
+        analysis_id: id,
         decisao,
         ressalvas,
         publicavel_para_consulta: publicar,
         status: decisao === 'deferida' ? 'certificada' : 'indeferida',
-        curso: "Administração", // mock
-        disciplina_ufsm_nome: data.ufsm_program_id,
-        instituicao_origem: "Instituição Externa",
-        disciplina_origem_nome: data.external_program_id,
+        curso: data.curso || "Administração", 
+        disciplina_ufsm_nome: data.ufsm_program_name || data.ufsm_program_id,
+        instituicao_origem: data.external_institution || "Instituição Externa",
+        disciplina_origem_nome: data.external_program_name || data.external_program_id,
       });
       alert('Certificação salva com sucesso!');
       router.push('/');

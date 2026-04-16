@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getAnalyses } from '@/lib/api';
 
 export default function Dashboard() {
   const [analyses, setAnalyses] = useState<any[]>([]);
@@ -14,10 +15,7 @@ export default function Dashboard() {
   const fetchAnalyses = async () => {
     try {
       setLoading(true);
-      const { request } = await import('@/lib/api');
-      // Using direct request because it's easier than exporting a new function right now
-      // @ts-ignore
-      const data = await import('@/lib/api').then(api => api.request('/analyses', { method: 'GET' }));
+      const data = await getAnalyses();
       setAnalyses(data || []);
       setError(null);
     } catch (err: any) {
@@ -65,8 +63,8 @@ export default function Dashboard() {
                         {a.external_program_id ? a.external_program_id : (a.external_program_ids ? `${a.external_program_ids.length} disciplinas` : 'N/A')}
                     </td>
                     <td>
-                        <span className={`badge ${a.content_score >= 75 ? 'badge-success' : 'badge-warning'}`}>{Math.round(a.content_score)}%</span>
-                        <span className="badge badge-info ml-1">{Math.round(a.workload_score)}%</span>
+                        <span className={`badge ${a.content_score >= 75 ? 'badge-success' : 'badge-warning'}`}>{a.content_score != null ? Math.round(a.content_score) : 0}%</span>
+                        <span className="badge badge-info ml-1">{a.workload_score != null ? Math.round(a.workload_score) + '%' : 'S/ CH'}</span>
                     </td>
                     <td>
                         <span className={`text-sm font-bold ${a.resultado_tecnico === 'EQUIVALENTE' ? 'text-success' : 'text-warning'}`}>
@@ -74,9 +72,15 @@ export default function Dashboard() {
                         </span>
                     </td>
                     <td>
-                      <Link href={`/certifications?analysis_id=${a.id}`} className="btn btn-primary btn-sm">
-                        Certificar
-                      </Link>
+                      {a.resultado_tecnico === 'PENDENTE_DADOS' ? (
+                        <Link href={`/certifications?analysis_id=${a.id}`} className="btn btn-warning btn-sm">
+                          Completar Dados
+                        </Link>
+                      ) : (
+                        <Link href={`/certifications?analysis_id=${a.id}`} className="btn btn-primary btn-sm">
+                          Certificar
+                        </Link>
+                      )}
                     </td>
                   </tr>
                 ))}

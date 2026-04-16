@@ -1,8 +1,17 @@
 /**
  * API client for the Curriculum Equivalence Analyzer backend
+ *
+ * No browser: usa o proxy do Next.js (/api/v1/*) → sem CORS.
+ * No SSR: usa URL absoluta via NEXT_PUBLIC_API_URL ou fallback.
  */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3008/api/v1';
+// Em browser usamos o proxy relativo do Next.js (next.config.ts rewrites).
+// Em SSR/build usamos a URL absoluta.
+const IS_BROWSER = typeof window !== 'undefined';
+const API_BASE = IS_BROWSER
+  ? '/api/v1'
+  : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3008/api/v1');
+const TIMEOUT_MS = 10000;
 
 let authToken: string | null = null;
 
@@ -25,37 +34,89 @@ export function clearToken() {
   if (typeof window !== 'undefined') localStorage.removeItem('cea_token');
 }
 
-async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const token = getToken();
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    ...(options.headers as Record<string, string> || {}),
-  };
-  if (token) headers['Authorization'] = `Bearer ${token}`;
-
-  const res = await fetch(`${API_BASE}${path}`, { ...options, headers });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ detail: res.statusText }));
-    throw new Error(err.detail || `HTTP ${res.status}`);
+export function decodeToken(token: string | null): any {
+  if (!token) return null;
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    return null;
   }
-  return res.json();
+}
+
+async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  try {
+    const token = getToken();
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...(options.headers as Record<string, string> || {}),
+    };
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+    const res = await fetch(`${API_BASE}${path}`, { 
+      ...options, 
+      headers,
+      signal: controller.signal 
+    });
+    
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: res.statusText }));
+      throw new Error(err.detail || `HTTP ${res.status}`);
+    }
+    return res.json();
+  } catch (err: any) {
+    if (err.name === 'AbortError') throw new Error('Tempo limite excedido. Verifique sua conexão.');
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 // ── Auth ────────────────────────────────────────────────────────────────────
 export async function login(username: string, password: string) {
-  const form = new URLSearchParams({ username, password });
-  const res = await fetch(`${API_BASE}/auth/login`, {
-    method: 'POST', body: form,
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  });
-  if (!res.ok) throw new Error('Usuário ou senha incorretos');
-  const data = await res.json();
-  setToken(data.access_token);
-  return data;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const form = new URLSearchParams({ username, password });
+    const res = await fetch(`${API_BASE}/auth/login`, {
+      method: 'POST', body: form,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      signal: controller.signal
+    });
+    if (!res.ok) throw new Error('Usuário ou senha incorretos');
+    const data = await res.json();
+    setToken(data.access_token);
+    return data;
+  } catch (err: any) {
+    if (err.name === 'AbortError') throw new Error('Tempo limite excedido.');
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 // ── Health ───────────────────────────────────────────────────────────────────
 export const health = () => request<{ status: string }>('/health');
+
+/** Verifica conectividade com o backend sem lançar exceção. Retorna `true` se OK. */
+export async function checkBackendHealth(): Promise<boolean> {
+  try {
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch(`${API_BASE}/health`, { signal: controller.signal });
+    clearTimeout(tid);
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
 
 // ── Public ───────────────────────────────────────────────────────────────────
 export const searchPublicEquivalences = (curso?: string, disciplina?: string) => {
@@ -83,6 +144,14 @@ export const updateDisciplinaUfsm = (curso: string, codigo: string, body: any) =
   request<any>(`/cursos/${encodeURIComponent(curso)}/disciplinas/${encodeURIComponent(codigo)}`, {
     method: 'PATCH', body: JSON.stringify(body)
   });
+
+export const getInstituicoesExternas = () => request<{instituicoes: string[]}>('/externos/instituicoes');
+export const getCursosExternos = (inst: string) => request<{cursos: string[]}>(`/externos/${encodeURIComponent(inst)}/cursos`);
+export const getDisciplinasExterno = (inst: string, curso: string) => 
+  request<{inst: string, curso: string, total: number, disciplinas: any[]}>(
+    `/externos/${encodeURIComponent(inst)}/${encodeURIComponent(curso)}/disciplinas`
+  );
+
 export const createDisciplinaExterna = (inst: string, curso: string, body: any) => 
   request<any>(`/externos/${encodeURIComponent(inst)}/${encodeURIComponent(curso)}/disciplinas`, {
     method: 'POST', body: JSON.stringify(body)
@@ -96,16 +165,26 @@ export const createProgramText = (body: CreateProgramTextRequest) =>
   });
 
 export const uploadPdf = async (file: File): Promise<UploadResponse> => {
-  const token = getToken();
-  const form = new FormData();
-  form.append('file', file);
-  const res = await fetch(`${API_BASE}/uploads/pdf`, {
-    method: 'POST',
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
-    body: form,
-  });
-  if (!res.ok) throw new Error('Erro ao fazer upload do PDF');
-  return res.json();
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const token = getToken();
+    const form = new FormData();
+    form.append('file', file);
+    const res = await fetch(`${API_BASE}/uploads/pdf`, {
+      method: 'POST',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: form,
+      signal: controller.signal
+    });
+    if (!res.ok) throw new Error('Erro ao fazer upload do PDF');
+    return res.json();
+  } catch (err: any) {
+    if (err.name === 'AbortError') throw new Error('Tempo limite excedido.');
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 };
 
 export const createProgramPdf = (body: CreateProgramPdfRequest) =>
@@ -113,9 +192,14 @@ export const createProgramPdf = (body: CreateProgramPdfRequest) =>
     method: 'POST', body: JSON.stringify(body),
   });
 
+export const getPdfMetadata = (uploadId: string) =>
+  request<any>(`/uploads/pdf/${uploadId}/metadata`);
+
 // ── Analyses ─────────────────────────────────────────────────────────────────
 export const createAnalysis = (body: CreateAnalysisRequest) =>
   request<AnalysisSummary>('/analyses', { method: 'POST', body: JSON.stringify(body) });
+
+export const getAnalyses = () => request<any[]>('/analyses');
 
 export const getAnalysis = (id: string) => request<any>(`/analyses/${id}`);
 
@@ -156,9 +240,10 @@ export interface CreateProgramTextRequest {
 }
 
 export interface CreateProgramPdfRequest {
-  tipo: 'externo'; codigo: string; nome: string;
+  tipo: 'ufsm' | 'externo'; codigo: string; nome: string;
   instituicao?: string; curso?: string; upload_id: string;
   carga_horaria_informada?: number; nota?: number; aprovado?: boolean;
+  ementa_texto?: string;
 }
 
 export interface UploadResponse { upload_id: string; path: string; filename: string; }
